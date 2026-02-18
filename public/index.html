@@ -6,22 +6,60 @@
 </head>
 <body>
 
-<h2>Todo List</h2>
+<div class="container">
 
-<input id="taskText" placeholder="Enter task...">
+    <h1>Task List</h1>
+    <div class="divider"></div>
 
-<select id="taskPriority">
-    <option value="low">Low</option>
-    <option value="medium">Medium</option>
-    <option value="high">High</option>
-</select>
+    <!-- Search (Improvement 4) -->
+    <input 
+        id="searchInput" 
+        placeholder="Search tasks by name..." 
+        oninput="loadTasks()"
+    >
 
-<button onclick="addTask()">Add</button>
-<button id="updateBtn" onclick="updateTask()" disabled>Update</button>
-<button onclick="clearFields()">Clear</button>
+    <!-- Helper Text (Improvement 1) -->
+    <p class="helper-text">
+        Tip: Click a task to edit, then press Update.
+    </p>
 
-<p id="message"></p>
-<ol id="taskList"></ol>
+    <div class="controls">
+        <input id="taskText" placeholder="Enter task...">
+
+        <select id="taskPriority">
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+        </select>
+
+        <div class="buttons">
+            <button onclick="addTask()">Add</button>
+            <button id="updateBtn" onclick="updateTask()" disabled>Update</button>
+            <button onclick="clearFields()">Clear</button>
+        </div>
+    </div>
+
+    <!-- Filters (Improvement 3) -->
+    <div class="filters">
+        <button id="filter-all" onclick="setFilter('all')">All</button>
+        <button id="filter-high" onclick="setFilter('high')">High</button>
+        <button id="filter-medium" onclick="setFilter('medium')">Medium</button>
+        <button id="filter-low" onclick="setFilter('low')">Low</button>
+        <button id="filter-completed" onclick="setFilter('completed')">Completed</button>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <p id="message"></p>
+
+    <!-- Empty State (Improvement 2) -->
+    <p id="emptyState" class="empty-state" style="display:none;">
+        No tasks yet — add one above.
+    </p>
+
+    <ol id="taskList"></ol>
+
+</div>
 
 <script src="script.js"></script>
 </body>

@@ -1,107 +1,215 @@
 :root {
-    --primary: #6C5CE7;
-    --secondary: #00CEC9;
-    --accent: #FF7675;
-    --background: #F5F6FA;
-    --text-dark: #2D3436;
-    --success: #00B894;
-    --error: #D63031;
+    --primary: #4B3F72;      /* Deep Architectural Purple */
+    --secondary: #3A6EA5;    /* Muted Blue Accent */
+    --light: #F5F7FB;        /* Soft Light Contrast */
+    --text: #1E1E2F;
+    --line: #D6DBF2;         /* Horizontal structure line */
+
+    --high: #6A4C93;         /* Deep Purple Priority */
+    --medium: #3A6EA5;       /* Blue Priority */
+    --low: #A9B8E8;          /* Light Contrast Priority */
 }
 
+/* Base Layout */
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--background);
-    padding: 40px;
-    color: var(--text-dark);
+    margin: 0;
+    font-family: "Georgia", serif;
+    background-color: var(--light);
+    color: var(--text);
 }
 
+/* Wright-style Container (Strong Horizontal Emphasis) */
+.container {
+    max-width: 750px;
+    margin: 60px auto;
+    padding: 30px 25px;
+    border-top: 8px solid var(--primary);
+    border-bottom: 2px solid var(--line);
+    background: white;
+}
+
+/* Typography */
+h1 {
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: var(--primary);
+}
+
+/* Horizontal Dividers (Core Wright Principle) */
+.divider {
+    height: 4px;
+    background-color: var(--primary);
+    margin: 12px 0 24px 0;
+}
+
+.section-divider {
+    height: 1px;
+    background-color: var(--line);
+    margin: 25px 0;
+}
+
+/* Helper Text */
+.helper-text {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+/* Inputs */
 input, select {
-    padding: 8px;
-    margin-right: 8px;
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid var(--line);
+    background: transparent;
+    font-family: "Helvetica Neue", sans-serif;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-bottom: 2px solid var(--secondary);
+}
+
+/* Search Bar */
+#searchInput {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+/* Controls Layout */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 10px;
 }
 
 button {
-    padding: 8px 12px;
-    margin-right: 6px;
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    font-family: "Helvetica Neue", sans-serif;
+    letter-spacing: 0.5px;
     cursor: pointer;
+    transition: 0.2s ease;
 }
 
-ol {
-    margin-top: 20px;
+button:hover {
+    background-color: var(--secondary);
 }
 
-li {
-    padding: 10px;
-    margin-bottom: 8px;
-    border-radius: 6px;
-    background: white;
-    position: relative;
+/* Filters */
+.filters {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    flex-wrap: wrap;
 }
 
-.high {
-    border-left: 6px solid red;
-}
-
-.medium {
-    border-left: 6px solid orange;
-}
-
-.low {
-    border-left: 6px solid green;
-}
-
-.selected {
+.active-filter {
     background-color: var(--secondary);
     color: white;
+    border-bottom: 2px solid var(--primary);
 }
 
-#delete-btn {
-    margin-left: 12px;
-    background-color: var(--accent);
-    border: none;
-    color: white;
+/* Task List (Horizontal Rhythm) */
+ol {
+    margin-top: 10px;
+    padding-left: 20px;
 }
 
-#delete-btn:hover {
-    background-color: var(--error);
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 6px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s ease;
 }
 
-.debug-id {
-    font-size: 0.8rem;
-    color: #888;
-    margin-left: 6px;
+/* Selected Editing State */
+.selected {
+    background-color: #EEF2FF;
 }
 
-.success {
-    color: var(--success);
+/* Task Text */
+.task-text {
+    flex: 1;
+    cursor: pointer;
+    font-family: "Helvetica Neue", sans-serif;
 }
 
-.error {
-    color: var(--error);
+.task-text:hover {
+    color: var(--secondary);
 }
 
-/* Priority Tag Styling */
+/* Priority Tags */
 .priority-tag {
-    margin-left: 10px;
-    padding: 3px 8px;
-    border-radius: 12px;
     font-size: 0.75rem;
+    letter-spacing: 1px;
     font-weight: bold;
-    color: white;
 }
 
 .priority-tag.high {
-    background-color: red;
+    color: var(--high);
 }
 
 .priority-tag.medium {
-    background-color: orange;
+    color: var(--medium);
 }
 
 .priority-tag.low {
-    background-color: green;
+    color: var(--low);
 }
 
-.task-text {
-    margin-right: 6px;
+/* Wright-style Vertical Accent Lines */
+.high {
+    border-left: 5px solid var(--high);
+}
+
+.medium {
+    border-left: 5px solid var(--medium);
+}
+
+.low {
+    border-left: 5px solid var(--low);
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 6px 12px;
+}
+
+.delete-btn:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    opacity: 0.6;
+    margin-top: 25px;
+    font-style: italic;
+}
+
+/* Messages */
+.success {
+    color: var(--secondary);
+    margin-top: 12px;
+}
+
+.error {
+    color: #B00020;
+    margin-top: 12px;
 }
